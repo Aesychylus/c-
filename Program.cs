@@ -1,45 +1,96 @@
 ﻿using System;
 
-namespace Project2
+namespace Project1
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            int total = 0;
-            string a;
-            Console.WriteLine("Please enter the designation of the employee");
-            a = Console.ReadLine();
-
-            SalarySlip engineer = new SalarySlip(1500, 100, 500);
-
-            SalarySlip manager = new SalarySlip(1500, 250, 1000);
-
-            SalarySlip analyst = new SalarySlip(1500, 150, 800);
-
+        {   int[] hours = new int[3];
+            int fare_calculate;
             
+            Console.WriteLine("What type of vehicle was parked. Bike, Car or Bus");
+            string a = Console.ReadLine();
 
-
-            if (a == "engineer")
-
+            for (int i = 0; i <= (hours.Length - 1) ; i++) 
             {
-                
-                total = engineer.basicPay + engineer.fuel + engineer.medical;
-                Console.WriteLine("The total salary of this designation including allowances is" + " " + "$" + total);
+                Console.WriteLine("Please enter number of parking hours for each vehicle in a chronological order");
+                hours[i] = Convert.ToInt32(Console.ReadLine());
+
             }
 
-            if (a == "manager")
+            if (a== "bike")
             {
-                total = manager.basicPay + manager.fuel + manager.medical;
-                Console.WriteLine("The total salary of this designation including allowances is" + " " + "$" + total);
+                for (int m=0; m <= (hours.Length-1);m++)
+                {
+                    if (hours[m] <= 3)
+                    {
+                        fare_calculate = 2;
+                        Console.WriteLine("The parking fare for this person is" + " " + fare_calculate);
+
+                    }
+
+                    if (hours[m] > 3 && hours[m] <= 24)
+                    {
+                        fare_calculate = 2 + ((hours[m]-3) * 1/2);
+                        Console.WriteLine("The parking fare for this person is" + " " + fare_calculate);
+                    }
+
+                    if (hours[m] > 24)
+                    {
+                        fare_calculate = 10;
+                        Console.WriteLine("The parking fare for this person is" + " " + fare_calculate);
+                    }
+                }
+            }
+            if (a == "car")
+            {
+                for (int m = 0; m <= (hours.Length - 1); m++)
+                {
+                    if (hours[m] <= 3)
+                    {
+                        fare_calculate = 4;
+                        Console.WriteLine("The parking fare for this person is" + " " + fare_calculate);
+
+                    }
+
+                    if (hours[m] > 3 && hours[m] <= 24)
+                    {
+                        fare_calculate = 4 + ((hours[m] - 3) * 1);
+                        Console.WriteLine("The parking fare for this person is" + " " + fare_calculate);
+                    }
+
+                    if (hours[m] > 24)
+                    {
+                        fare_calculate = 20;
+                        Console.WriteLine("The parking fare for this person is" + " " + fare_calculate);
+                    }
+                }
             }
 
-            if (a == "analyst")
+            if (a == "bus")
             {
-                total = analyst.basicPay + analyst.fuel + analyst.medical;
-                Console.WriteLine("The total salary of this designation including allowances is" + " " + "$" + total);
-            }
+                for (int m = 0; m <= (hours.Length - 1); m++)
+                {
+                    if (hours[m] <= 3)
+                    {
+                        fare_calculate = 6;
+                        Console.WriteLine("The parking fare for this person is" + " " + "$" + fare_calculate);
 
+                    }
+
+                    if (hours[m] > 3 && hours[m] <= 24)
+                    {
+                        fare_calculate = 6 + ((hours[m] - 3) * 3 / 2);
+                        Console.WriteLine("The parking fare for this person is" + " " + "$" + fare_calculate);
+                    }
+
+                    if (hours[m] > 24)
+                    {
+                        fare_calculate = 30;
+                        Console.WriteLine("The parking fare for this person is" + " " + "$" + fare_calculate);
+                    }
+                }
+            }
         }
     }
 }
